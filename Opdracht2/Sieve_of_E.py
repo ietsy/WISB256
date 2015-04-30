@@ -11,19 +11,16 @@ except:
     print("Please give the input in the following style:")
     print("pythonfile maximum-number outputfile")
 
-def findprimes(maxnr):
+def findprimes(maxnr ):
     prim = []
-    for num in range(2, maxnr):
-        for i in range(2,num):
-            if (num % i) == 0:
-                break
-            else:
-                prim.append(num)
-    primorder = list(set(prim))
-    return primorder
+    multiples = set()
+    for i in range(2, maxnr+1):
+        if i not in multiples:
+            prim.append(i)
+            multiples.update(range(i*i, maxnr+1, i))
+    return prim
 
 primlist = findprimes(maxnumber)
-
 for i in range(len(primlist)):
     output.write(str(primlist[i]) + '\n')
 
