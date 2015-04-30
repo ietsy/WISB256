@@ -3,10 +3,26 @@ import time
 
 T1 = time.perf_counter()
 
-maxnumber = int(sys.argv[1])
-output = open(sys.argv[2], 'w')
+try:
+    maxnumber = int(sys.argv[1])
+    output = open(sys.argv[2], 'w')
 
-primlist = [2, 3, 5, 7]
+except:
+    print("Please give the input in the following style:")
+    print("pythonfile maximum-number outputfile")
+
+def findprimes(maxnr):
+    prim = []
+    for num in range(2, maxnr):
+        for i in range(2,num):
+            if (num % i) == 0:
+                break
+            else:
+                prim.append(num)
+    primorder = list(set(prim))
+    return primorder
+
+primlist = findprimes(maxnumber)
 
 for i in range(len(primlist)):
     output.write(str(primlist[i]) + '\n')
