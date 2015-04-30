@@ -44,6 +44,7 @@ output.write(str(primlist[0]))
 for i in range(1, len(primlist)):
     output.write('\n')
     output.write(str(primlist[i]))
+output.close()
 
 # print the output
 print('Found ', str(len(primlist)), ' Prime numbers smaller than ', maxnumber, ' in ', T2 - T1)
